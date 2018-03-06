@@ -59,7 +59,14 @@ public class matrix{
     }
 
     public static char[][] moveShip(char[][] matrix, int[] shipPlace, int dir){
-        if(0 <= (shipPlace[1] + dir) && (shipPlace[1] + dir) <= matrix[shipPlace[0]].length - 1 ) {
+
+        if(dir > 0) {
+            dir = 1;
+        } else {
+            dir = -1;
+        }
+
+        if (0 <= (shipPlace[1] + dir) && (shipPlace[1] + dir) <= matrix[shipPlace[0]].length - 1) {
             matrix[shipPlace[0]][shipPlace[1]] = ' ';
             matrix[shipPlace[0]][shipPlace[1] + dir] = 'A';
         }

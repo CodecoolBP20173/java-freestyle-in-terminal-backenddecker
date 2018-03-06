@@ -1,4 +1,5 @@
 package com.codecool.spaceship;
+import com.codecool.spaceship.matrix;
 
 public class main {
 
