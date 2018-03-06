@@ -51,7 +51,6 @@ public class matrix {
     }
 
     public static void drawMatrix(char[][] matrix) {
-        System.out.print("\033[H\033[2J");
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.print(matrix[i][j]);
@@ -64,10 +63,12 @@ public class matrix {
     public static void main() {
         char[][] matrix;
         matrix = generateMatrix();
+        matrix = asteroid.generateAsteroid(matrix);
         drawMatrix(matrix);
         boolean end = false;
         while(end == false) {
-            matrix = ship.moveShip(matrix, 1);
+            main.clearScreen();
+            matrix = asteroid.moveAsteroid(matrix);
             drawMatrix(matrix);
             sleep(1000);
             int[] shipData = ship.getShipPos(matrix);
