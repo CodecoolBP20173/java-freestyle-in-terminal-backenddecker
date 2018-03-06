@@ -1,4 +1,5 @@
-import java.util.Arrays;
+package com.codecool.spaceship;
+import java.util.*;
 
 public class matrix{
 
@@ -34,6 +35,7 @@ public class matrix{
                 matrix[i][j] = ' ';
             }
         }
+        matrix[(matrix.length - 1) - 1][(matrix.length - 1) / 2 ] = 'A';
         return matrix;
     }
 
@@ -56,8 +58,22 @@ public class matrix{
         }
     }
 
-    public static void main(String[] args){
+    public static char[][] moveShip(char[][] matrix, int[] shipPlace, int dir){
+        if(0 <= (shipPlace[1] + dir) && (shipPlace[1] + dir) <= matrix[shipPlace[0]].length - 1 ) {
+            matrix[shipPlace[0]][shipPlace[1]] = ' ';
+            matrix[shipPlace[0]][shipPlace[1] + dir] = 'A';
+        }
+        return matrix;
+    }
+
+    public static void main(){
         char[][] matrix = generateMatrix();
+        int[] shipPlace = new int[2];
+        shipPlace[0] = 17;
+        shipPlace[1] = 9;
+
         drawMatrix(matrix);
+        char[][] newMatrix = moveShip(matrix, shipPlace, 1);
+        drawMatrix(newMatrix);
     }
 }
