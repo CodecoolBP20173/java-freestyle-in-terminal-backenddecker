@@ -1,7 +1,6 @@
 package com.codecool.spaceship;
-import java.util.*;
 
-public class matrix {
+public class Matrix {
 
 
     private static char[][] generateMatrix() {
@@ -63,15 +62,15 @@ public class matrix {
     public static void main() {
         char[][] matrix;
         matrix = generateMatrix();
-        matrix = asteroid.generateAsteroid(matrix);
+        matrix = Asteroid.generateAsteroid(matrix);
         drawMatrix(matrix);
         boolean end = false;
         while(end == false) {
-            main.clearScreen();
-            matrix = asteroid.moveAsteroid(matrix);
+            Main.clearScreen();
+            matrix = Asteroid.moveAsteroid(matrix);
             drawMatrix(matrix);
-            sleep(1000);
-            int[] shipData = ship.getShipPos(matrix);
+            sleep(500);
+            int[] shipData = Ship.getShipPos(matrix);
             if(shipData[1] == matrix.length - 2){
                 end = true;
             }

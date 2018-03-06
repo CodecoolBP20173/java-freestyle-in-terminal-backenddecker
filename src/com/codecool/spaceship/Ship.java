@@ -1,6 +1,6 @@
 package com.codecool.spaceship;
 
-public class ship {
+public class Ship {
 
     public static int[] getShipPos(char[][] matrix){
         int[] shipPlace = new int[2];

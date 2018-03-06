@@ -2,9 +2,8 @@ package com.codecool.spaceship;
 
 import java.util.*;
 
-import com.codecool.spaceship.matrix;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -29,7 +28,7 @@ public class main {
             }
         } while (error);
 
-        matrix.main();
+        Matrix.main();
     }
 
     public static void clearScreen() {

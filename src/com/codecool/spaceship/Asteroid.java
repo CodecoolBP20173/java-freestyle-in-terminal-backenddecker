@@ -3,13 +3,13 @@ import sun.nio.cs.ext.MacHebrew;
 
 import java.util.*;
 
-public class asteroid {
+public class Asteroid {
     public static char[][] generateAsteroid(char[][] matrix) {
         int[] startPoint = new int[2];
         int firstCoordinate = 0;
         int secondCoordinate = 1;
         startPoint[firstCoordinate] = 1;
-        int secondPos = (int)(Math.random() * matrix.length - 3) + 1;
+        int secondPos = (int)(Math.random() * 16) + 1;
         startPoint[secondCoordinate] = secondPos;
         matrix[startPoint[firstCoordinate]][startPoint[secondCoordinate]]= 'o';
         return matrix;
