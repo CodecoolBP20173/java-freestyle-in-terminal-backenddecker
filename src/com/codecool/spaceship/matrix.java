@@ -65,10 +65,15 @@ public class matrix {
         char[][] matrix;
         matrix = generateMatrix();
         drawMatrix(matrix);
-        while(true) {
+        boolean end = false;
+        while(end == false) {
             matrix = ship.moveShip(matrix, 1);
             drawMatrix(matrix);
             sleep(1000);
+            int[] shipData = ship.getShipPos(matrix);
+            if(shipData[1] == matrix.length - 2){
+                end = true;
+            }
         }
 
 
