@@ -62,10 +62,10 @@ public class Matrix {
     public static void main() {
         char[][] matrix;
         matrix = generateMatrix();
-        matrix = Asteroid.generateAsteroid(matrix);
         drawMatrix(matrix);
         boolean end = false;
         while(end == false) {
+            matrix = Asteroid.generateAsteroid(matrix);
             matrix = Asteroid.moveAsteroid(matrix);
             int shipMovementDirection = Input.getDirectionForShip();
             matrix = Ship.moveShip(matrix, shipMovementDirection);
@@ -73,9 +73,11 @@ public class Matrix {
             drawMatrix(matrix);
             sleep(500);
             int[] shipData = Ship.getShipPos(matrix);
-            int[] asteroidData = Asteroid.getAsteroidPos(matrix);
-            if(shipData[0] == (asteroidData[0] + 1) && shipData[1] == asteroidData[1]){
-                end = true;
+            int[][] asteroidData = Asteroid.getAsteroidPos(matrix);
+            for (int[] asteroid: asteroidData) {
+                if(shipData[0] == (asteroid[0] + 1) && shipData[1] == asteroid[1]){
+                    end = true;
+                }
             }
         }
 
