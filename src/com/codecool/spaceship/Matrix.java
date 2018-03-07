@@ -63,26 +63,29 @@ public class Matrix {
         char[][] matrix;
         matrix = generateMatrix();
         drawMatrix(matrix);
-        boolean end = false;
-        while(end == false) {
+        int health = 3;
+        while(health > 0) {
             matrix = Asteroid.generateAsteroid(matrix);
             matrix = Asteroid.moveAsteroid(matrix);
             int shipMovementDirection = Input.getDirectionForShip();
             matrix = Ship.moveShip(matrix, shipMovementDirection);
             Main.clearScreen();
             drawMatrix(matrix);
+            System.out.println(health);
             sleep(500);
             int[] shipData = Ship.getShipPos(matrix);
             int[][] asteroidData = Asteroid.getAsteroidPos(matrix);
             for (int[] asteroid: asteroidData) {
                 if(shipData[0] == (asteroid[0] + 1) && shipData[1] == asteroid[1]){
-                    end = true;
+                    matrix[(matrix.length - 1) - 1][(matrix.length - 1) / 2] = 'A';
+                    drawMatrix(matrix);
+                    health--;
                 }
             }
         }
 
-
     }
+
     public static void sleep(int time){
         try {
             Thread.sleep(time);
