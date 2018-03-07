@@ -66,12 +66,11 @@ public class Matrix {
         drawMatrix(matrix);
         boolean end = false;
         while(end == false) {
-            Main.clearScreen();
             matrix = Asteroid.moveAsteroid(matrix);
             int shipMovementDirection = Input.getDirectionForShip();
             matrix = Ship.moveShip(matrix, shipMovementDirection);
-            drawMatrix(matrix);
             Main.clearScreen();
+            drawMatrix(matrix);
             sleep(500);
             int[] shipData = Ship.getShipPos(matrix);
             int[] asteroidData = Asteroid.getAsteroidPos(matrix);

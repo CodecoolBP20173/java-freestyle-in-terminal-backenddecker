@@ -10,7 +10,7 @@ public class Main {
         int num = 0;
         boolean error;
 
-        /*System.out.println("Welcome to our game!");
+        System.out.println("Welcome to our game!");
         System.out.println("To start the game press 1!");
         do {
             error = false;
@@ -26,7 +26,7 @@ public class Main {
                 sc.nextLine();
                 System.err.println("Not a number!");
             }
-        } while (error);*/
+        } while (error);
 
         Matrix.main();
     }
