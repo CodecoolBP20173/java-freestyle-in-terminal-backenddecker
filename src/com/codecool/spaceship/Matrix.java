@@ -59,7 +59,7 @@ public class Matrix {
     }
 
 
-    public static void main() {
+    public static String main() {
         char[][] matrix;
         matrix = generateMatrix();
         drawMatrix(matrix);
@@ -81,9 +81,8 @@ public class Matrix {
             }
         }
         System.out.println("\033[0;31m" + "You have been killed!" + "\033[0m");
-        String[] restart = new String[1];
-        restart[0] = "restart";
-        Main.main(restart);
+        String restart = "restart";
+        return restart;
 
 
     }
