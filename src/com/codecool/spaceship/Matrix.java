@@ -71,9 +71,11 @@ public class Matrix {
             int shipMovementDirection = Input.getDirectionForShip();
             matrix = Ship.moveShip(matrix, shipMovementDirection);
             drawMatrix(matrix);
+            Main.clearScreen();
             sleep(500);
             int[] shipData = Ship.getShipPos(matrix);
-            if(shipData[1] == matrix.length - 2){
+            int[] asteroidData = Asteroid.getAsteroidPos(matrix);
+            if(shipData[0] == (asteroidData[0] + 1) && shipData[1] == asteroidData[1]){
                 end = true;
             }
         }

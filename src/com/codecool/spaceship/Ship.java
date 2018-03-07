@@ -18,7 +18,7 @@ public class Ship {
     public static char[][] moveShip(char[][] mtrx, int dir){
         int[] shipPlace = getShipPos(mtrx);
 
-        if (0 <= (shipPlace[1] + dir) && (shipPlace[1] + dir) <= mtrx[shipPlace[0]].length - 2) {
+        if (1 <= (shipPlace[1] + dir) && (shipPlace[1] + dir) <= mtrx[shipPlace[0]].length - 2) {
             mtrx[shipPlace[0]][shipPlace[1]] = ' ';
             mtrx[shipPlace[0]][shipPlace[1] + dir] = 'A';
         }
