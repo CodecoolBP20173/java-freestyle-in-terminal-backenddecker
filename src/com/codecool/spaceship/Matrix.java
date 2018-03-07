@@ -66,12 +66,15 @@ public class Matrix {
         drawMatrix(matrix);
         boolean end = false;
         while(end == false) {
-            Main.clearScreen();
             matrix = Asteroid.moveAsteroid(matrix);
+            int shipMovementDirection = Input.getDirectionForShip();
+            matrix = Ship.moveShip(matrix, shipMovementDirection);
+            Main.clearScreen();
             drawMatrix(matrix);
             sleep(500);
             int[] shipData = Ship.getShipPos(matrix);
-            if(shipData[1] == matrix.length - 2){
+            int[] asteroidData = Asteroid.getAsteroidPos(matrix);
+            if(shipData[0] == (asteroidData[0] + 1) && shipData[1] == asteroidData[1]){
                 end = true;
             }
         }
