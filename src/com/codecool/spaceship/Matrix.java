@@ -80,6 +80,10 @@ public class Matrix {
                 }
             }
         }
+        System.out.println("\033[0;31m" + "You have been killed!" + "\033[0m");
+        String[] restart = new String[1];
+        restart[0] = "restart";
+        Main.main(restart);
 
 
     }

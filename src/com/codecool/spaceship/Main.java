@@ -9,15 +9,19 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int num = 0;
         boolean error;
-
-        System.out.println("Welcome to our game!");
+        if(args.length == 0){
+            System.out.println("Welcome to our game!");
+        } else {
+            System.out.println("Wanna play again?");
+        }
         System.out.println("To start the game press 1!");
+        System.out.println("To exit the game press 2!");
         do {
             error = false;
             try {
                 System.out.print("Press a number: ");
                 num = sc.nextInt();
-                if (num != 1) {
+                if (num < 1 || num > 2) {
                     error = true;
                     System.err.println("Choose an other one!");
                 }
@@ -27,8 +31,12 @@ public class Main {
                 System.err.println("Not a number!");
             }
         } while (error);
+        if(num == 1){
+            Matrix.main();
+        } else {
+            System.out.println("Thanks for playing!");
+        }
 
-        Matrix.main();
     }
 
     public static void clearScreen() {
