@@ -68,6 +68,8 @@ public class Matrix {
         while(end == false) {
             Main.clearScreen();
             matrix = Asteroid.moveAsteroid(matrix);
+            int shipMovementDirection = Input.getDirectionForShip();
+            matrix = Ship.moveShip(matrix, shipMovementDirection);
             drawMatrix(matrix);
             sleep(500);
             int[] shipData = Ship.getShipPos(matrix);
