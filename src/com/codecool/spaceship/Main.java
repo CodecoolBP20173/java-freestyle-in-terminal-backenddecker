@@ -5,21 +5,25 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        String restart = " ";
+        boolean restart = false;
         String restartMain = "restart";
         int num = 0;
         do {
             Scanner sc = new Scanner(System.in);
             boolean error;
-            if (args.length == 0) {
+
+            if (!restart) {
                 System.out.println("Welcome to our game!");
             } else {
                 System.out.println("Wanna play again?");
             }
+
             System.out.println("To start the game press 1!");
             System.out.println("To exit the game press 2!");
+
             do {
                 error = false;
+
                 try {
                     System.out.print("Press a number: ");
                     num = sc.nextInt();
@@ -33,12 +37,14 @@ public class Main {
                     System.err.println("Not a number!");
                 }
             } while (error);
+
             if (num == 1) {
                 restart = Matrix.main();
             } else {
+                restart = false;
                 System.out.println("Thanks for playing!");
             }
-        } while(restartMain.equals(restart) && num == 1);
+        } while(restart);
     }
 
     public static void clearScreen() {
