@@ -67,8 +67,12 @@ public class Matrix {
         while(end == false) {
             matrix = Asteroid.generateAsteroid(matrix);
             matrix = Asteroid.moveAsteroid(matrix);
-            int shipMovementDirection = Input.getDirectionForShip();
-            matrix = Ship.moveShip(matrix, shipMovementDirection);
+            int input = Input.getUserInput();
+            if (input == 1 || input == -1) {
+                matrix = Ship.moveShip(matrix, input);
+            } else if (input == 2) {
+                matrix = Shoot.generateLaser(matrix);
+            }
             Main.clearScreen();
             drawMatrix(matrix);
             sleep(500);

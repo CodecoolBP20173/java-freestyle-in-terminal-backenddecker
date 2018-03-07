@@ -15,18 +15,19 @@ public class Input {
         return null;
     }
 
-    public static int getDirectionForShip() {
+    public static int getUserInput() {
         Character userInput = tryToRead();
         if (userInput != null){
             if (userInput == 'a' || userInput == '4') {
                 return -1;
             } else if (userInput == 'd' || userInput == '6') {
                 return 1;
+            } else if (userInput == ' ') {
+                return 2;
             } else {
                 return 0;
             }
         }
         return 0;
-
     }
 }
