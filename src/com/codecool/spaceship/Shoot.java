@@ -39,33 +39,44 @@ public class Shoot {
     public static int[][] getLaserPositions(char[][] matrix){
         int numberOfLasers = countLasers(matrix);
         int laserIndex = 0;
-        int[][] laserPositins = new int[numberOfLasers][2];
+        int[][] laserPositions = new int[numberOfLasers][2];
 
         for(int i = 1; i < matrix.length - 1; i ++){
             for(int j = 1; j < matrix.length - 1; j++) {
                 if (matrix[i][j] == '^') {
-                    laserPositins[laserIndex][0] = i;
-                    laserPositins[laserIndex][1] = j;
+                    laserPositions[laserIndex][0] = i;
+                    laserPositions[laserIndex][1] = j;
                     laserIndex++;
                 }
             }
         }
-        return laserPositins;
+        return laserPositions;
     }
 
     public static char[][] moveLasers(char[][] matrix){
-        int[][] laserPositins = getLaserPositions(matrix);
-        for (int[] laser: laserPositins) {
-            if (laser[0] > 1){
-                if ((matrix[laser[0] - 1][laser[1]]) == 'o') {
-                    matrix[laser[0]][laser[1]] = ' ';
-                    matrix[laser[0] - 1][laser[1]] = ' ';
+        int[][] laserPositions = getLaserPositions(matrix);
+
+        for (int[] laserPosition: laserPositions) {
+            int[] newLaserPosition = {laserPosition[0] - 1, laserPosition[1]};
+            char characterInFrontOfLaser = matrix[newLaserPosition[0]][newLaserPosition[1]];
+            char characterInPlaceOfLaser = matrix[laserPosition[0]][laserPosition[1]];
+
+            if (laserPosition[0] > 1) {
+                matrix[laserPosition[0]][laserPosition[1]] = ' ';
+                char newCharacter = ' ';
+                matrix = Matrix.changeCharacterInMatrix(matrix, laserPosition, newCharacter);
+
+                if (characterInFrontOfLaser == 'o') {
+                    matrix = Matrix.changeCharacterInMatrix(matrix, newLaserPosition, newCharacter);
+
                 } else {
-                    matrix[laser[0]][laser[1]] = ' ';
-                    matrix[laser[0] - 1][laser[1]] = '^';
+                    newCharacter = '^';
+                    matrix = Matrix.changeCharacterInMatrix(matrix, newLaserPosition, newCharacter);
                 }
+                
             } else {
-                matrix[laser[0]][laser[1]] = ' ';
+                char newCharacter = ' ';
+                matrix = Matrix.changeCharacterInMatrix(matrix, laserPosition, newCharacter);
             }
         }
         return matrix;
