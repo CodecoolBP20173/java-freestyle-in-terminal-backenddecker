@@ -10,8 +10,7 @@ public class Asteroid {
         int firstCoordinate = 0;
         int secondCoordinate = 1;
         startPoint[firstCoordinate] = 1;
-        int secondPos = (int) (Math.random() * (matrix.length - 3)) + 1;
-        startPoint[secondCoordinate] = secondPos;
+        startPoint[secondCoordinate] = (int) (Math.random() * (matrix.length - 3)) + 1;
         matrix[startPoint[firstCoordinate]][startPoint[secondCoordinate]] = 'o';
         return matrix;
     }

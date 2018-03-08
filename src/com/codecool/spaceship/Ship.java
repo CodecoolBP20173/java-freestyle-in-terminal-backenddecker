@@ -7,8 +7,9 @@ public class Ship {
             matrix[(matrix.length - 1) - 1][(matrix.length - 1) / 2] = 'A';
         } else {
             for(int index=0; index < matrix[(matrix.length - 1)].length; index++) {
-                if(matrix[(matrix.length - 1) - 1][index] == ' '){
-                    matrix[(matrix.length - 1) - 1][index] = 'A';
+                int randomCoordinate = (int) (Math.random() * (matrix.length - 3)) + 1;
+                if(matrix[(matrix.length - 1) - 1][randomCoordinate] == ' '){
+                    matrix[(matrix.length - 1) - 1][randomCoordinate] = 'A';
                     return matrix;
                 }
             }
