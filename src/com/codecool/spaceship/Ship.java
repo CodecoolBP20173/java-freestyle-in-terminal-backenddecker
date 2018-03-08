@@ -4,7 +4,7 @@ public class Ship {
 
     public static char[][] generateShip(char[][] matrix) {
         char[] newShipPlacement = matrix[(matrix.length - 1) - 1];
-        if(newShipPlacement[(matrix.length - 1) / 2] == ' ') {
+        if(newShipPlacement[(matrix.length - 1) / 2] == ' '&& matrix[(matrix.length - 1) - 2][(matrix.length - 1) / 2] == ' ') {
             newShipPlacement[(matrix.length - 1) / 2] = 'A';
         } else {
             for(int index=0; index < matrix[(matrix.length - 1)].length; index++) {
