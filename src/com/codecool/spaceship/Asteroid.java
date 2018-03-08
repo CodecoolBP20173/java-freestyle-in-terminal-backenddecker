@@ -52,8 +52,13 @@ public class Asteroid {
         int[][] asteroidPos = getAsteroidPos(matrix);
         for (int[] asteroid: asteroidPos) {
             if (asteroid[0] < matrix.length - 2){
-                matrix[asteroid[0]][asteroid[1]] = ' ';
-                matrix[asteroid[0] + 1][asteroid[1]] = 'o';
+                if ((matrix[asteroid[0] + 1][asteroid[1]]) == '^') {
+                    matrix[asteroid[0]][asteroid[1]] = ' ';
+                    matrix[asteroid[0] + 1][asteroid[1]] = ' ';
+                } else {
+                    matrix[asteroid[0]][asteroid[1]] = ' ';
+                    matrix[asteroid[0] + 1][asteroid[1]] = 'o';
+                }
             } else {
                 matrix[asteroid[0]][asteroid[1]] = ' ';
                 matrix = generateAsteroid(matrix);

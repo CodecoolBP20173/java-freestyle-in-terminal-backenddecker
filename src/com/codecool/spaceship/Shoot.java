@@ -3,12 +3,18 @@ package com.codecool.spaceship;
 public class Shoot {
     public static char[][] generateLaser(char[][] matrix) {
         int numberOfLasers = countLasers(matrix);
+
         if (numberOfLasers < 3){
             int[] shipPlace = Ship.getShipPos(matrix);
             int[] laserStartingPosition = new int[2];
             laserStartingPosition[0] = shipPlace[0] - 1;
             laserStartingPosition[1] = shipPlace[1];
-            matrix[laserStartingPosition[0]][laserStartingPosition[1]] = '^';
+
+            if (matrix[laserStartingPosition[0]][laserStartingPosition[1]] == 'o') {
+                matrix[laserStartingPosition[0]][laserStartingPosition[1]] = ' ';
+            } else {
+                matrix[laserStartingPosition[0]][laserStartingPosition[1]] = '^';
+            }
         }
         return matrix;
     }
@@ -47,8 +53,13 @@ public class Shoot {
         int[][] laserPositins = getLaserPositions(matrix);
         for (int[] laser: laserPositins) {
             if (laser[0] > 1){
-                matrix[laser[0]][laser[1]] = ' ';
-                matrix[laser[0] - 1][laser[1]] = '^';
+                if ((matrix[laser[0] - 1][laser[1]]) == 'o') {
+                    matrix[laser[0]][laser[1]] = ' ';
+                    matrix[laser[0] - 1][laser[1]] = ' ';
+                } else {
+                    matrix[laser[0]][laser[1]] = ' ';
+                    matrix[laser[0] - 1][laser[1]] = '^';
+                }
             } else {
                 matrix[laser[0]][laser[1]] = ' ';
             }
