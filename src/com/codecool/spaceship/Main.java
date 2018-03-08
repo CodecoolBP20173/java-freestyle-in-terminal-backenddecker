@@ -27,21 +27,21 @@ public class Main {
                 error = false;
 
                 try {
-                    System.out.print("Press a number: ");
+                    System.out.print("Press a number: "+"\r\n");
                     num = sc.nextInt();
                     if (num < 1 || num > 2) {
                         error = true;
-                        System.err.println("Choose an other one!");
+                        System.err.println("Choose an other one!"+"\r\n");
                     }
                 } catch (InputMismatchException ex) {
                     error = true;
                     sc.nextLine();
-                    System.err.println("Not a number!");
+                    System.err.println("Not a number!"+"\r\n");
                 }
             } while (error);
 
             if (num == 1) {
-                System.out.print("\r\n\r\n"+"Use 4/A and 6/D to move, space to shoot!");
+                System.out.print("\r\n\r\n"+"Use 4/A and 6/D to move, space to shoot!"+"\r\n");
                 Matrix.sleep(3000);
                 restart = Matrix.main();
             } else {

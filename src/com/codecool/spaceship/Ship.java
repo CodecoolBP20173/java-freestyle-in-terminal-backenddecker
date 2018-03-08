@@ -9,7 +9,7 @@ public class Ship {
         } else {
             for(int index=0; index < matrix[(matrix.length - 1)].length; index++) {
                 int randomCoordinate = (int) (Math.random() * (matrix.length - 3)) + 1;
-                if(newShipPlacement[randomCoordinate] == ' '){
+                if(newShipPlacement[randomCoordinate] == ' ' && matrix[(matrix.length - 1) - 2][randomCoordinate] == ' '){
                     newShipPlacement[randomCoordinate] = 'A';
                     return matrix;
                 }
