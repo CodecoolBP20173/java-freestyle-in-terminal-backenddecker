@@ -1,8 +1,6 @@
 package com.codecool.spaceship;
 
-import sun.nio.cs.ext.MacHebrew;
 
-import java.util.*;
 
 public class Asteroid {
     public static char[][] generateAsteroid(char[][] matrix) {
@@ -16,7 +14,7 @@ public class Asteroid {
         return matrix;
     }
 
-    public static int countAsteroids(char[][] matrix) {
+    private static int countAsteroids(char[][] matrix) {
         int numberOfAsteroids = 0;
 
         for (int i = 1; i < matrix.length - 1; i++) {

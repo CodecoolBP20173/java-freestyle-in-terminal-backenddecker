@@ -7,7 +7,6 @@ public class Main {
 
     public static void main(String[] args) {
         boolean restart = false;
-        String restartMain = "restart";
         int num = 0;
         do {
             Scanner sc = new Scanner(System.in);
