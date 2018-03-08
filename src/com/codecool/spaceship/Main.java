@@ -1,4 +1,5 @@
 package com.codecool.spaceship;
+
 import java.util.*;
 
 
@@ -44,7 +45,7 @@ public class Main {
                 restart = false;
                 System.out.println("Thanks for playing!");
             }
-        } while(restart);
+        } while (restart);
     }
 
     public static void clearScreen() {
