@@ -6,10 +6,9 @@ public class Input {
     private static Character tryToRead() {
         try {
             if (System.in.available() > 0) {
-                return (char)System.in.read();
+                return (char) System.in.read();
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.err.println("Error " + e.getMessage());
         }
         return null;
@@ -17,7 +16,7 @@ public class Input {
 
     public static int getUserInput() {
         Character userInput = tryToRead();
-        if (userInput != null){
+        if (userInput != null) {
             if (userInput == 'a' || userInput == '4') {
                 return -1;
             } else if (userInput == 'd' || userInput == '6') {
