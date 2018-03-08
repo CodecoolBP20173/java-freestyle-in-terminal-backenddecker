@@ -71,8 +71,8 @@ public class Matrix {
             int shipMovementDirection = Input.getDirectionForShip();
             matrix = Ship.moveShip(matrix, shipMovementDirection);
             Main.clearScreen();
+            System.out.print("Health:" + health +"\r\n");
             drawMatrix(matrix);
-            System.out.println(health);
             sleep(500);
             int[] shipData = Ship.getShipPos(matrix);
             int[][] asteroidData = Asteroid.getAsteroidPos(matrix);
