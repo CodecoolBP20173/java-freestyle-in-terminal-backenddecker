@@ -17,7 +17,7 @@ public class Main {
             } else {
                 System.out.println("Wanna play again?");
             }
-
+            System.out.println();
             System.out.println("To start the game press 1!");
             System.out.println("To exit the game press 2!");
 

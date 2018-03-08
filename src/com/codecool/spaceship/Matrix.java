@@ -81,6 +81,7 @@ public class Matrix {
             }
         }
         System.out.println("\033[0;31m" + "You have been killed!" + "\033[0m");
+        System.out.println();
         boolean restart = true;
         return restart;
 
