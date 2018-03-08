@@ -83,9 +83,11 @@ public class Matrix {
             int[][] asteroidData = Asteroid.getAsteroidPos(matrix);
             for (int[] asteroid: asteroidData) {
                 if(shipData[0] == (asteroid[0] + 1) && shipData[1] == asteroid[1]){
-                    matrix = Ship.generateShip(matrix);
-                    drawMatrix(matrix);
                     health--;
+                    if(health > 0){
+                        matrix = Ship.generateShip(matrix);
+                        drawMatrix(matrix);
+                    }
                 }
             }
         }
