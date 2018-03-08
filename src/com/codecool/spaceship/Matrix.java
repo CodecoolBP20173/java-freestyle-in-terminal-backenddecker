@@ -45,7 +45,15 @@ public class Matrix {
     private static void drawMatrix(char[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j]);
+                if(matrix[i][j] == 'A'){
+                    System.out.print("\033[0;37m" + matrix[i][j] + "\033[0m");
+                } else if (matrix[i][j] == 'o') {
+                    System.out.print("\033[0;33m" + matrix[i][j] + "\033[0m");
+                } else if (matrix[i][j] == '^') {
+                    System.out.print("\033[1;34m" + matrix[i][j] + "\033[0m");
+                } else {
+                    System.out.print(matrix[i][j]);
+                }
             }
             System.out.println();
         }
