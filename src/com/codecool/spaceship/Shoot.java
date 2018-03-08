@@ -1,10 +1,13 @@
 package com.codecool.spaceship;
 
 public class Shoot {
+
+    public static int laserShots = 15;
+
     public static char[][] generateLaser(char[][] matrix) {
         int numberOfLasers = countLasers(matrix);
 
-        if (numberOfLasers < 3){
+        if (numberOfLasers < 3 && laserShots > 0){
             int[] shipPlace = Ship.getShipPos(matrix);
             int[] laserStartingPosition = new int[2];
             laserStartingPosition[0] = shipPlace[0] - 1;
@@ -15,6 +18,7 @@ public class Shoot {
             } else {
                 matrix[laserStartingPosition[0]][laserStartingPosition[1]] = '^';
             }
+            laserShots--;
         }
         return matrix;
     }
