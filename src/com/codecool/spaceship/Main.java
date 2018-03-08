@@ -16,6 +16,7 @@ public class Main {
             if (!restart) {
                 System.out.println("Welcome to our game!");
             } else {
+                System.out.println();
                 System.out.println("Wanna play again?");
             }
             System.out.println();
