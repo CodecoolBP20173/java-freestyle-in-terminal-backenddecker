@@ -73,6 +73,7 @@ public class Matrix {
             } else if (input == 2) {
                 matrix = Shoot.generateLaser(matrix);
             }
+            matrix = Shoot.moveLasers(matrix);
             Main.clearScreen();
             drawMatrix(matrix);
             sleep(500);
