@@ -1,5 +1,7 @@
 package com.codecool.spaceship;
 
+import java.util.Date;
+
 public class Matrix {
 
 
@@ -51,11 +53,12 @@ public class Matrix {
 
 
     public static boolean main() {
+        Date startTime = new Date();
         char[][] matrix;
         matrix = generateMatrix();
         drawMatrix(matrix);
         int health = 3;
-        while(health > 0) {
+        while(health >= 0) {
             matrix = Asteroid.generateAsteroid(matrix);
             matrix = Asteroid.moveAsteroid(matrix);
             int input = Input.getUserInput();
@@ -74,15 +77,17 @@ public class Matrix {
             for (int[] asteroid: asteroidData) {
                 if(shipData[0] == (asteroid[0] + 1) && shipData[1] == asteroid[1]){
                     health--;
-                    if(health > 0){
+                    if(health >= 0){
                         matrix = Ship.generateShip(matrix);
                         drawMatrix(matrix);
                     }
                 }
             }
         }
+        Date endTime = new Date();
+        int secondsPlayed = (int)((endTime.getTime() - startTime.getTime())/1000);
         System.out.println("\033[0;31m" + "You have been killed!" + "\033[0m");
-        System.out.println();
+        System.out.printf("You have survived: %d seconds", secondsPlayed);
 
         return true;
 
