@@ -51,6 +51,13 @@ public class Matrix {
         }
     }
 
+    public static char[][] changeCharacterInMatrix(char[][] matrix, int[] position, char newCharacter) {
+        int firstCoordinate = position[0];
+        int secondCoordinate = position[1];
+        matrix[firstCoordinate][secondCoordinate] = newCharacter;
+        return matrix;
+    }
+
     public static boolean main() {
         Date startTime = new Date();
         char[][] matrix;
@@ -74,7 +81,7 @@ public class Matrix {
             drawMatrix(matrix);
             sleep(300);
             int[] shipData = Ship.getShipPos(matrix);
-            int[][] asteroidData = Asteroid.getAsteroidPos(matrix);
+            int[][] asteroidData = Asteroid.getAsteroidPositions(matrix);
             for (int[] asteroid: asteroidData) {
                 if(shipData[0] == (asteroid[0] + 1) && shipData[1] == asteroid[1]){
                     health--;

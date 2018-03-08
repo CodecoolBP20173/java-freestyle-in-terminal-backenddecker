@@ -26,43 +26,49 @@ public class Asteroid {
         return numberOfAsteroids;
     }
 
-    public static int[][] getAsteroidPos(char[][] matrix) {
-
+    public static int[][] getAsteroidPositions(char[][] matrix) {
         int numberOfAsteroids = countAsteroids(matrix);
-
         int asteroidIndex = 0;
-
-        int[][] asteroidPos = new int[numberOfAsteroids][2];
+        int[][] asteroidPositions = new int[numberOfAsteroids][2];
 
         for (int i = 1; i < matrix.length - 1; i++) {
             for (int j = 1; j < matrix.length - 1; j++) {
                 if (matrix[i][j] == 'o') {
-                    asteroidPos[asteroidIndex][0] = i;
-                    asteroidPos[asteroidIndex][1] = j;
+                    asteroidPositions[asteroidIndex][0] = i;
+                    asteroidPositions[asteroidIndex][1] = j;
                     asteroidIndex++;
                 }
             }
         }
-        return asteroidPos;
+        return asteroidPositions;
     }
 
     public static char[][] moveAsteroid(char[][] matrix) {
-        int[][] asteroidPos = getAsteroidPos(matrix);
-        for (int[] asteroid: asteroidPos) {
-            if (asteroid[0] < matrix.length - 2){
-                if ((matrix[asteroid[0] + 1][asteroid[1]]) == '^') {
-                    matrix[asteroid[0]][asteroid[1]] = ' ';
-                    matrix[asteroid[0] + 1][asteroid[1]] = ' ';
+        int[][] asteroidPositions = getAsteroidPositions(matrix);
+
+        for (int[] asteroidPosition: asteroidPositions) {
+            int[] newAsteroidPosition = {asteroidPosition[0] + 1, asteroidPosition[1]};
+            char characterInFrontOfAsteroid = matrix[newAsteroidPosition[0]][newAsteroidPosition[1]];
+            char characterInPlaceOfAsteroid = matrix[asteroidPosition[0]][asteroidPosition[1]];
+
+            if (asteroidPosition[0] < matrix.length - 2) {
+                char newCharacter = ' ';
+                matrix = Matrix.changeCharacterInMatrix(matrix, asteroidPosition, newCharacter);
+
+                if (characterInFrontOfAsteroid == '^') {
+                    matrix = Matrix.changeCharacterInMatrix(matrix, newAsteroidPosition, newCharacter);
+                    
                 } else {
-                    matrix[asteroid[0]][asteroid[1]] = ' ';
-                    matrix[asteroid[0] + 1][asteroid[1]] = 'o';
+                    newCharacter = 'o';
+                    matrix = Matrix.changeCharacterInMatrix(matrix, newAsteroidPosition, newCharacter);
                 }
+                
             } else {
-                matrix[asteroid[0]][asteroid[1]] = ' ';
+                char newCharacter = ' ';
+                matrix = Matrix.changeCharacterInMatrix(matrix, asteroidPosition, newCharacter);
                 matrix = generateAsteroid(matrix);
             }
         }
-
         return matrix;
     }
 }
