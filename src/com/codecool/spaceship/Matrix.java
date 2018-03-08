@@ -76,7 +76,7 @@ public class Matrix {
             }
             matrix = Shoot.moveLasers(matrix);
             Main.clearScreen();
-            System.out.print("Health:" + health +"\r\n");
+            System.out.print("Lives:" + health +"\r\n");
             System.out.print("Shots:" + Shoot.laserShots +"\r\n");
             drawMatrix(matrix);
             sleep(300);
@@ -102,7 +102,7 @@ public class Matrix {
 
     }
 
-    private static void sleep(int time) {
+    public static void sleep(int time) {
         try {
             Thread.sleep(time);
         } catch (Exception e) {

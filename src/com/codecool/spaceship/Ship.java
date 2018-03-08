@@ -4,12 +4,12 @@ public class Ship {
 
     public static char[][] generateShip(char[][] matrix) {
         char[] newShipPlacement = matrix[(matrix.length - 1) - 1];
-        if(newShipPlacement[(matrix.length - 1) / 2] == ' ') {
+        if(newShipPlacement[(matrix.length - 1) / 2] == ' '&& matrix[(matrix.length - 1) - 2][(matrix.length - 1) / 2] == ' ') {
             newShipPlacement[(matrix.length - 1) / 2] = 'A';
         } else {
             for(int index=0; index < matrix[(matrix.length - 1)].length; index++) {
                 int randomCoordinate = (int) (Math.random() * (matrix.length - 3)) + 1;
-                if(newShipPlacement[randomCoordinate] == ' '){
+                if(newShipPlacement[randomCoordinate] == ' ' && matrix[(matrix.length - 1) - 2][randomCoordinate] == ' '){
                     newShipPlacement[randomCoordinate] = 'A';
                     return matrix;
                 }
