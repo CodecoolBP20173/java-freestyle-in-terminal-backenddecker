@@ -51,13 +51,13 @@ public class Matrix {
         }
     }
 
-
     public static boolean main() {
         Date startTime = new Date();
         char[][] matrix;
         matrix = generateMatrix();
         drawMatrix(matrix);
         int health = 3;
+        Shoot.laserShots = 15;
         while(health >= 0) {
             matrix = Asteroid.generateAsteroid(matrix);
             matrix = Asteroid.moveAsteroid(matrix);
@@ -70,8 +70,9 @@ public class Matrix {
             matrix = Shoot.moveLasers(matrix);
             Main.clearScreen();
             System.out.print("Health:" + health +"\r\n");
+            System.out.print("Shots:" + Shoot.laserShots +"\r\n");
             drawMatrix(matrix);
-            sleep(500);
+            sleep(300);
             int[] shipData = Ship.getShipPos(matrix);
             int[][] asteroidData = Asteroid.getAsteroidPos(matrix);
             for (int[] asteroid: asteroidData) {
