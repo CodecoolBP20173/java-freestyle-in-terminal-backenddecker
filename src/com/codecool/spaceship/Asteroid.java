@@ -51,10 +51,15 @@ public class Asteroid {
 
     public static char[][] moveAsteroid(char[][] matrix) {
         int[][] asteroidPos = getAsteroidPos(matrix);
-        for (int[] asteroid : asteroidPos) {
-            if (asteroid[0] < matrix.length - 2) {
-                matrix[asteroid[0]][asteroid[1]] = ' ';
-                matrix[asteroid[0] + 1][asteroid[1]] = 'o';
+        for (int[] asteroid: asteroidPos) {
+            if (asteroid[0] < matrix.length - 2){
+                if ((matrix[asteroid[0] + 1][asteroid[1]]) == '^') {
+                    matrix[asteroid[0]][asteroid[1]] = ' ';
+                    matrix[asteroid[0] + 1][asteroid[1]] = ' ';
+                } else {
+                    matrix[asteroid[0]][asteroid[1]] = ' ';
+                    matrix[asteroid[0] + 1][asteroid[1]] = 'o';
+                }
             } else {
                 matrix[asteroid[0]][asteroid[1]] = ' ';
                 matrix = generateAsteroid(matrix);
