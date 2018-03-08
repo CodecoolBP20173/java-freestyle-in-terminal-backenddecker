@@ -20,8 +20,8 @@ public class Main {
                 System.out.println("Wanna play again?");
             }
             System.out.println();
-            System.out.println("To start the game press 1!");
-            System.out.println("To exit the game press 2!");
+            System.out.println("To start the game press 1 + Enter!");
+            System.out.println("To exit the game press 2 + Enter!");
 
             do {
                 error = false;
@@ -41,6 +41,8 @@ public class Main {
             } while (error);
 
             if (num == 1) {
+                System.out.print("\r\n\r\n"+"Use 4/A and 6/D to move, space to shoot!");
+                Matrix.sleep(3000);
                 restart = Matrix.main();
             } else {
                 restart = false;
