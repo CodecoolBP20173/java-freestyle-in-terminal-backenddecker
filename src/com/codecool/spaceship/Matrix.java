@@ -72,7 +72,7 @@ public class Matrix {
             System.out.print("Health:" + health +"\r\n");
             System.out.print("Shots:" + Shoot.laserShots +"\r\n");
             drawMatrix(matrix);
-            sleep(500);
+            sleep(300);
             int[] shipData = Ship.getShipPos(matrix);
             int[][] asteroidData = Asteroid.getAsteroidPos(matrix);
             for (int[] asteroid: asteroidData) {
