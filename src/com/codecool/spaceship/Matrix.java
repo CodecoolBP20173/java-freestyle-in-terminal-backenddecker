@@ -40,15 +40,6 @@ public class Matrix {
     }
 
 
-    public static void resetMatrix(char[][] matrix) {
-        for (int i = 0; i < matrix.length - 1; i++) {
-            for (int j = 0; j < matrix[i].length - 1; j++) {
-                matrix[i][j] = ' ';
-            }
-        }
-
-    }
-
     private static void drawMatrix(char[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -61,7 +52,6 @@ public class Matrix {
 
     public static boolean main() {
         char[][] matrix;
-        boolean restart = true;
         matrix = generateMatrix();
         drawMatrix(matrix);
         int health = 3;
@@ -94,12 +84,12 @@ public class Matrix {
         System.out.println("\033[0;31m" + "You have been killed!" + "\033[0m");
         System.out.println();
 
-        return restart;
+        return true;
 
 
     }
 
-    public static void sleep(int time) {
+    private static void sleep(int time) {
         try {
             Thread.sleep(time);
         } catch (Exception e) {
