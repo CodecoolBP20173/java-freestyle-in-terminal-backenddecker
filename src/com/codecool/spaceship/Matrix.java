@@ -35,7 +35,7 @@ public class Matrix {
                 matrix[i][j] = ' ';
             }
         }
-        matrix[(matrix.length - 1) - 1][(matrix.length - 1) / 2] = 'A';
+        matrix = Ship.generateShip(matrix);
         return matrix;
     }
 
@@ -78,7 +78,7 @@ public class Matrix {
             int[][] asteroidData = Asteroid.getAsteroidPos(matrix);
             for (int[] asteroid: asteroidData) {
                 if(shipData[0] == (asteroid[0] + 1) && shipData[1] == asteroid[1]){
-                    matrix[(matrix.length - 1) - 1][(matrix.length - 1) / 2] = 'A';
+                    matrix = Ship.generateShip(matrix);
                     drawMatrix(matrix);
                     health--;
                 }
