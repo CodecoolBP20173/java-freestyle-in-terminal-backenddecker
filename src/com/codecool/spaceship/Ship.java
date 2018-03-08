@@ -2,6 +2,22 @@ package com.codecool.spaceship;
 
 public class Ship {
 
+    public static char[][] generateShip(char[][] matrix) {
+        char[] newShipPlacement = matrix[(matrix.length - 1) - 1];
+        if(newShipPlacement[(matrix.length - 1) / 2] == ' ') {
+            newShipPlacement[(matrix.length - 1) / 2] = 'A';
+        } else {
+            for(int index=0; index < matrix[(matrix.length - 1)].length; index++) {
+                int randomCoordinate = (int) (Math.random() * (matrix.length - 3)) + 1;
+                if(newShipPlacement[randomCoordinate] == ' '){
+                    newShipPlacement[randomCoordinate] = 'A';
+                    return matrix;
+                }
+            }
+        }
+        return matrix;
+    }
+
     public static int[] getShipPos(char[][] matrix) {
         int[] shipPlace = new int[2];
         for (int i = 0; i < matrix[matrix.length - 2].length; i++) {

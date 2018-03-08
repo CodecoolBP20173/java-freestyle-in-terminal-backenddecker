@@ -6,6 +6,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
+        clearScreen();
         boolean restart = false;
         int num = 0;
         do {

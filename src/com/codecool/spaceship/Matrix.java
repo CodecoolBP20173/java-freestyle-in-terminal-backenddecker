@@ -35,7 +35,7 @@ public class Matrix {
                 matrix[i][j] = ' ';
             }
         }
-        matrix[(matrix.length - 1) - 1][(matrix.length - 1) / 2] = 'A';
+        matrix = Ship.generateShip(matrix);
         return matrix;
     }
 
@@ -54,8 +54,8 @@ public class Matrix {
         char[][] matrix;
         matrix = generateMatrix();
         drawMatrix(matrix);
-        boolean end = false;
-        while (!end) {
+        int health = 3;
+        while(health > 0) {
             matrix = Asteroid.generateAsteroid(matrix);
             matrix = Asteroid.moveAsteroid(matrix);
             int input = Input.getUserInput();
@@ -66,13 +66,18 @@ public class Matrix {
             }
             matrix = Shoot.moveLasers(matrix);
             Main.clearScreen();
+            System.out.print("Health:" + health +"\r\n");
             drawMatrix(matrix);
             sleep(500);
             int[] shipData = Ship.getShipPos(matrix);
             int[][] asteroidData = Asteroid.getAsteroidPos(matrix);
-            for (int[] asteroid : asteroidData) {
-                if (shipData[0] == (asteroid[0] + 1) && shipData[1] == asteroid[1]) {
-                    end = true;
+            for (int[] asteroid: asteroidData) {
+                if(shipData[0] == (asteroid[0] + 1) && shipData[1] == asteroid[1]){
+                    health--;
+                    if(health > 0){
+                        matrix = Ship.generateShip(matrix);
+                        drawMatrix(matrix);
+                    }
                 }
             }
         }
