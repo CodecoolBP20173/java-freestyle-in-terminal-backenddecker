@@ -1,5 +1,7 @@
 package com.codecool.spaceship;
 
+import java.util.Date;
+
 public class Matrix {
 
 
@@ -35,56 +37,75 @@ public class Matrix {
                 matrix[i][j] = ' ';
             }
         }
-        matrix[(matrix.length - 1) - 1][(matrix.length - 1) / 2] = 'A';
+        matrix = Ship.generateShip(matrix);
         return matrix;
     }
 
 
-    public static void resetMatrix(char[][] matrix) {
-        for (int i = 0; i < matrix.length - 1; i++) {
-            for (int j = 0; j < matrix[i].length - 1; j++) {
-                matrix[i][j] = ' ';
-            }
-        }
-
-    }
-
     private static void drawMatrix(char[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j]);
+                if(matrix[i][j] == 'A'){
+                    System.out.print("\033[0;37m" + matrix[i][j] + "\033[0m");
+                } else if (matrix[i][j] == 'o') {
+                    System.out.print("\033[0;33m" + matrix[i][j] + "\033[0m");
+                } else if (matrix[i][j] == '^') {
+                    System.out.print("\033[1;34m" + matrix[i][j] + "\033[0m");
+                } else {
+                    System.out.print(matrix[i][j]);
+                }
             }
             System.out.println();
         }
     }
 
+    public static char[][] changeCharacterInMatrix(char[][] matrix, int[] position, char newCharacter) {
+        int firstCoordinate = position[0];
+        int secondCoordinate = position[1];
+        matrix[firstCoordinate][secondCoordinate] = newCharacter;
+        return matrix;
+    }
 
     public static boolean main() {
+        Date startTime = new Date();
         char[][] matrix;
-        boolean restart = true;
         matrix = generateMatrix();
         drawMatrix(matrix);
-        boolean end = false;
-        while (!end) {
+        int health = 3;
+        Shoot.laserShots = 15;
+        while(health >= 0) {
             matrix = Asteroid.generateAsteroid(matrix);
             matrix = Asteroid.moveAsteroid(matrix);
-            int shipMovementDirection = Input.getDirectionForShip();
-            matrix = Ship.moveShip(matrix, shipMovementDirection);
+            int input = Input.getUserInput();
+            if (input == 1 || input == -1) {
+                matrix = Ship.moveShip(matrix, input);
+            } else if (input == 2) {
+                matrix = Shoot.generateLaser(matrix);
+            }
+            matrix = Shoot.moveLasers(matrix);
             Main.clearScreen();
+            System.out.print("Lives:" + health +"\r\n");
+            System.out.print("Shots:" + Shoot.laserShots +"\r\n");
             drawMatrix(matrix);
-            sleep(500);
+            sleep(300);
             int[] shipData = Ship.getShipPos(matrix);
-            int[][] asteroidData = Asteroid.getAsteroidPos(matrix);
-            for (int[] asteroid : asteroidData) {
-                if (shipData[0] == (asteroid[0] + 1) && shipData[1] == asteroid[1]) {
-                    end = true;
+            int[][] asteroidData = Asteroid.getAsteroidPositions(matrix);
+            for (int[] asteroid: asteroidData) {
+                if(shipData[0] == (asteroid[0] + 1) && shipData[1] == asteroid[1]){
+                    health--;
+                    if(health >= 0){
+                        matrix = Ship.generateShip(matrix);
+                        drawMatrix(matrix);
+                    }
                 }
             }
         }
+        Date endTime = new Date();
+        int secondsPlayed = (int)((endTime.getTime() - startTime.getTime())/1000);
         System.out.println("\033[0;31m" + "You have been killed!" + "\033[0m");
-        System.out.println();
+        System.out.printf("You have survived: %d seconds", secondsPlayed);
 
-        return restart;
+        return true;
 
 
     }
